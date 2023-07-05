@@ -1,4 +1,3 @@
-<script>
   // Function to fetch and parse the CSV data
   function fetchAndParseCSV() {
     return fetch('https://uploads-ssl.webflow.com/6213e151e80699c74710709e/64a50692754d001d8b6c9c7c_Untitled%20spreadsheet%20-%20Sheet1.csv')
@@ -98,4 +97,3 @@
 
     return '';
   }
-</script>
