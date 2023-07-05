@@ -77,6 +77,7 @@ function handleSearch(event) {
     const titleLink = document.createElement('a');
     titleLink.href = result.URL;
     titleLink.textContent = result.TITLE;
+    titleLink.classList.add('search-result-link');
 
     // Create a result item div and add the "result-item" class
     const resultItem = document.createElement('div');
