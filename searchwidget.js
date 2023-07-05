@@ -84,6 +84,13 @@ function handleSearch(event) {
     resultItem.classList.add('result-item');
     resultItem.appendChild(titleLink);
 
+     // Check if the TYPE matches an element ID and show the corresponding element
+     const type = result.TYPE.toLowerCase();
+     const matchingElement = document.getElementById(type);
+     if (matchingElement) {
+     matchingElement.style.display = 'block'; // Or any other display style you desire
+  }
+
     resultsContainer.appendChild(resultItem);
   }
 }
