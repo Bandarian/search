@@ -88,7 +88,7 @@ function handleSearch(event) {
      const type = result.TYPE;
      const matchingElement = document.getElementById(type);
      if (matchingElement) {
-     matchingElement.style.display = 'block'; // Or any other display style you desire
+     matchingElement.style.display = 'flex'; // Or any other display style you desire
   }
 
     resultsContainer.appendChild(resultItem);
