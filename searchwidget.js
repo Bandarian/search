@@ -59,38 +59,47 @@ let parsedData = [];
 fetchAndParseCSV().then(data => {
   parsedData = data;
   console.log(parsedData); // Log the parsed data to the console
+
+  // Display initial results on page load
+  displayResults(parsedData);
 });
+
+function displayResults(data) {
+  // Clear previous results
+  const resultsContainer = document.getElementById('learn-results');
+  resultsContainer.innerHTML = '';
+
+  // Display the first three results
+  for (let i = 0; i < 3 && i < data.length; i++) {
+    const result = data[i];
+    createResultItem(result, resultsContainer);
+  }
+}
 
 function handleSearch(event) {
   const query = event.target.value;
   const searchResults = searchArticles(query, parsedData);
 
-  // Clear previous results
-  const resultsContainer = document.getElementById('learn-results');
-  resultsContainer.innerHTML = '';
+  // Display the search results
+  displayResults(searchResults);
+}
 
-  // Display top three matching results
-  for (let i = 0; i < 3 && i < searchResults.length; i++) {
-    const result = searchResults[i];
+function createResultItem(result, container) {
+  // Create a link for the title
+  const titleLink = document.createElement('a');
+  titleLink.href = result.URL;
+  titleLink.textContent = result.TITLE;
+  titleLink.classList.add('search-result-link');
 
-    // Create a link for the title
-    const titleLink = document.createElement('a');
-    titleLink.href = result.URL;
-    titleLink.textContent = result.TITLE;
-    titleLink.classList.add('search-result-link');
+  // Create a result item div and add the "result-item" class
+  const resultItem = document.createElement('div');
+  resultItem.classList.add('result-item');
 
-    // Create a result item div and add the "result-item" class
-    const resultItem = document.createElement('div');
-    resultItem.classList.add('result-item');
-    
+  // Create an icon-result div and add it next to the title link
+  const iconResult = document.createElement('div');
+  iconResult.classList.add('icon-result');
+  resultItem.appendChild(iconResult);
+  resultItem.appendChild(titleLink);
 
-    // Create an icon-result div and add it next to the title link
-    const iconResult = document.createElement('div');
-    iconResult.classList.add('icon-result');
-    resultItem.appendChild(iconResult);
-    resultItem.appendChild(titleLink);
-    
-    
-    resultsContainer.appendChild(resultItem);
-  }
+  container.appendChild(resultItem);
 }
