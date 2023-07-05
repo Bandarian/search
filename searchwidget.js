@@ -85,7 +85,7 @@ function handleSearch(event) {
     resultItem.appendChild(titleLink);
 
      // Check if the TYPE matches an element ID and show the corresponding element
-     const type = result.TYPE.toLowerCase();
+     const type = result.TYPE;
      const matchingElement = document.getElementById(type);
      if (matchingElement) {
      matchingElement.style.display = 'block'; // Or any other display style you desire
