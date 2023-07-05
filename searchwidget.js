@@ -82,17 +82,19 @@ function handleSearch(event) {
     // Create a result item div and add the "result-item" class
     const resultItem = document.createElement('div');
     resultItem.classList.add('result-item');
-    resultItem.appendChild(titleLink);
+    
 
-     // Check if the TYPE matches an element ID and show the corresponding element
-   const type = result.TYPE;
-   const matchingElement = document.getElementById(type);
-   if (matchingElement) {
-    matchingElement.style.display = 'flex';
-    matchingElement.style.justifyContent = 'center';
-    matchingElement.style.alignItems = 'center';
+    // Check if the TYPE matches an element ID and show the corresponding element
+    const type = result.TYPE;
+    const matchingElement = document.getElementById(type);
+    if (matchingElement) {
+    // Create an icon-result div and add it to the result-item
+    const iconResult = document.createElement('div');
+    iconResult.classList.add('icon-result');
+    resultItem.appendChild(iconResult);
   }
-
+    
+    resultItem.appendChild(titleLink);
     resultsContainer.appendChild(resultItem);
   }
 }
