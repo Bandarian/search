@@ -85,10 +85,12 @@ function handleSearch(event) {
     resultItem.appendChild(titleLink);
 
      // Check if the TYPE matches an element ID and show the corresponding element
-     const type = result.TYPE;
-     const matchingElement = document.getElementById(type);
-     if (matchingElement) {
-     matchingElement.style.display = 'flex'; // Or any other display style you desire
+   const type = result.TYPE;
+   const matchingElement = document.getElementById(type);
+   if (matchingElement) {
+    matchingElement.style.display = 'flex';
+    matchingElement.style.justifyContent = 'center';
+    matchingElement.style.alignItems = 'center';
   }
 
     resultsContainer.appendChild(resultItem);
