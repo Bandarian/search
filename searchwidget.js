@@ -58,6 +58,7 @@
   // Fetch and parse the CSV data when the page loads
   fetchAndParseCSV().then(data => {
     parsedData = data;
+    console.log(parsedData); // Print parsed data to the console
   });
 
   function handleSearch(event) {
