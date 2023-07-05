@@ -87,8 +87,9 @@ function handleSearch(event) {
     // Create an icon-result div and add it next to the title link
     const iconResult = document.createElement('div');
     iconResult.classList.add('icon-result');
-    resultItem.appendChild(titleLink);
     resultItem.appendChild(iconResult);
+    resultItem.appendChild(titleLink);
+    
     
     resultsContainer.appendChild(resultItem);
   }
