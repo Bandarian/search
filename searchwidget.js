@@ -65,35 +65,17 @@
     const searchResults = searchArticles(query, parsedData);
 
     // Clear previous results
-    const resultsContainer = document.getElementById('results');
+    const resultsContainer = document.getElementById('learn-results');
     resultsContainer.innerHTML = '';
 
     // Display top three matching results
     for (let i = 0; i < 3 && i < searchResults.length; i++) {
       const result = searchResults[i];
 
-      // Determine the icon based on the type
-      const iconClass = determineIconClass(result.TYPE);
-
-      // Get the existing HTML element for the search result
-      const resultElement = document.getElementById(`result-${i + 1}`);
-
-      // Update the existing HTML element with the search result data
-      resultElement.querySelector('.search-result-icon').classList.add(iconClass);
-      resultElement.querySelector('.search-result-title').textContent = result.TITLE;
-      resultElement.querySelector('.search-result-link').href = result.URL;
+      // Create a link for the title
+      const titleLink = document.createElement('a');
+      titleLink.href = result.URL;
+      titleLink.textContent = result.TITLE;
+      resultsContainer.appendChild(titleLink);
     }
-  }
-
-  // Function to determine the icon class based on the type
-  function determineIconClass(type) {
-    if (type === 'Article') {
-      return 'article-icon';
-    } else if (type === 'Post') {
-      return 'post-icon';
-    } else if (type === 'News') {
-      return 'news-icon';
-    }
-
-    return '';
   }
