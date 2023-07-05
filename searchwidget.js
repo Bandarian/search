@@ -100,9 +100,9 @@ function createResultItem(result, container) {
   iconResult.classList.add('icon-result');
 
   // Check the TYPE and add the appropriate SVG code as an image element
-  if (result.TYPE === "News") {
-    const newsImage = document.createElement('img');
-    newsImage.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
+  if (result.TYPE === "Post") {
+    const postImage = document.createElement('img');
+    postImage.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
     <svg width="24" height="33" viewBox="0 0 24 33" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2450_6236)">
 <path d="M15.0458 17.8552C15.7615 17.0742 16.2184 16.0329 16.2184 14.8844C16.2184 12.4649 14.2539 10.4895 11.8478 10.4895C9.44172 10.4895 7.47725 12.4649 7.47725 14.8844C7.47725 16.1401 8.01025 17.2733 8.86304 18.0695L4.88842 27.5331C4.73614 27.7322 4.64477 27.9619 4.59908 28.2222L3.48741 30.8867C3.16761 31.6677 3.51786 32.5712 4.29451 32.8927C4.49248 32.9693 4.69045 33.0153 4.88842 33.0153C5.48233 33.0153 6.04578 32.6631 6.28944 32.0812L7.17268 29.9986H16.5534C16.6448 29.9986 16.7361 29.9679 16.8275 29.9373L17.726 32.0812C17.9696 32.6631 18.5331 33.0153 19.127 33.0153C19.325 33.0153 19.5229 32.9693 19.7209 32.8927C20.4976 32.5712 20.863 31.6677 20.528 30.8867L15.061 17.8552H15.0458ZM11.8478 13.5521C12.5788 13.5521 13.1727 14.1494 13.1727 14.8844C13.1727 15.6194 12.5788 16.2166 11.8478 16.2166C11.1168 16.2166 10.5229 15.6194 10.5229 14.8844C10.5229 14.1494 11.1168 13.5521 11.8478 13.5521ZM11.8478 19.2793C12.0153 19.2793 12.1676 19.2487 12.3199 19.2334L13.6752 22.4798H10.3097L11.6651 19.264C11.6651 19.264 11.7869 19.2793 11.8478 19.2793ZM8.45187 26.9206L9.03055 25.5424H14.9696L15.5483 26.9206H8.45187Z" fill="#29292B"/>
@@ -117,9 +117,9 @@ function createResultItem(result, container) {
 </svg>
 
     `);
-    newsImage.alt = "News";
+    postImage.alt = "Post";
 
-    iconResult.appendChild(newsImage);
+    iconResult.appendChild(postImage);
   } else if (result.TYPE === "Article") {
     const articleImage = document.createElement('img');
     articleImage.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
