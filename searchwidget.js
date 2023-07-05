@@ -1,14 +1,11 @@
-// Function to fetch and parse the CSV data
 function fetchAndParseCSV() {
   return fetch('https://uploads-ssl.webflow.com/6213e151e80699c74710709e/64a50692754d001d8b6c9c7c_Untitled%20spreadsheet%20-%20Sheet1.csv')
     .then(response => response.text())
     .then(csvData => {
-      // Parse the CSV data
       return parseCSV(csvData);
     });
 }
 
-// Function to parse the CSV data into an array of objects
 function parseCSV(csvData) {
   const lines = csvData.split('\n');
   const headers = lines[0].split(',');
@@ -31,7 +28,6 @@ function parseCSV(csvData) {
   return result;
 }
 
-// Function to perform search based on query
 function searchArticles(query, data) {
   const results = [];
   const queryLowerCase = query.toLowerCase();
@@ -48,28 +44,23 @@ function searchArticles(query, data) {
   return results;
 }
 
-// Attach event listener to the search input
 const searchBar = document.getElementById('searchBar');
 searchBar.addEventListener('input', handleSearch);
 
-// Global variable to store the parsed CSV data
 let parsedData = [];
 
-// Fetch and parse the CSV data when the page loads
 fetchAndParseCSV().then(data => {
   parsedData = data;
-  console.log(parsedData); // Log the parsed data to the console
+  console.log(parsedData);
 
-  // Display initial results on page load
   displayResults(parsedData);
 });
 
 function displayResults(data) {
-  // Clear previous results
+
   const resultsContainer = document.getElementById('learn-results');
   resultsContainer.innerHTML = '';
 
-  // Display the first three results
   for (let i = 0; i < 3 && i < data.length; i++) {
     const result = data[i];
     createResultItem(result, resultsContainer);
@@ -80,26 +71,21 @@ function handleSearch(event) {
   const query = event.target.value;
   const searchResults = searchArticles(query, parsedData);
 
-  // Display the search results
   displayResults(searchResults);
 }
 
 function createResultItem(result, container) {
-  // Create a link for the title
   const titleLink = document.createElement('a');
   titleLink.href = result.URL;
   titleLink.textContent = result.TITLE;
   titleLink.classList.add('search-result-link');
 
-  // Create a result item div and add the "result-item" class
   const resultItem = document.createElement('div');
   resultItem.classList.add('result-item');
 
-  // Create an icon-result div and add it next to the title link
   const iconResult = document.createElement('div');
   iconResult.classList.add('icon-result');
 
-  // Check the TYPE and add the appropriate SVG code as an image element
   if (result.TYPE === "Post") {
     const postImage = document.createElement('img');
     postImage.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
@@ -142,9 +128,7 @@ function createResultItem(result, container) {
 
     iconResult.appendChild(articleImage);
   }
-
   resultItem.appendChild(iconResult);
   resultItem.appendChild(titleLink);
-
   container.appendChild(resultItem);
 }
