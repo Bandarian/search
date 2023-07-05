@@ -1,3 +1,4 @@
+<script>
   // Function to fetch and parse the CSV data
   function fetchAndParseCSV() {
     return fetch('https://uploads-ssl.webflow.com/6213e151e80699c74710709e/64a50692754d001d8b6c9c7c_Untitled%20spreadsheet%20-%20Sheet1.csv')
@@ -38,7 +39,7 @@
 
     for (let i = 0; i < data.length; i++) {
       const item = data[i];
-      const titleLowerCase = item.Title.toLowerCase();
+      const titleLowerCase = item.TITLE.toLowerCase();
 
       if (titleLowerCase.includes(queryLowerCase)) {
         results.push(item);
@@ -58,7 +59,6 @@
   // Fetch and parse the CSV data when the page loads
   fetchAndParseCSV().then(data => {
     parsedData = data;
-    console.log(parsedData); // Print parsed data to the console
   });
 
   function handleSearch(event) {
@@ -73,22 +73,16 @@
     for (let i = 0; i < 3 && i < searchResults.length; i++) {
       const result = searchResults[i];
 
-      const resultElement = document.createElement('div');
-      resultElement.classList.add('search-result');
-
       // Determine the icon based on the type
-      const iconClass = determineIconClass(result.Type);
-      const iconElement = document.createElement('div');
-      iconElement.classList.add('search-result-icon', iconClass);
-      resultElement.appendChild(iconElement);
+      const iconClass = determineIconClass(result.TYPE);
 
-      // Create a link for the title
-      const titleLink = document.createElement('a');
-      titleLink.href = result.Link;
-      titleLink.textContent = result.Title;
-      resultElement.appendChild(titleLink);
+      // Get the existing HTML element for the search result
+      const resultElement = document.getElementById(`result-${i + 1}`);
 
-      resultsContainer.appendChild(resultElement);
+      // Update the existing HTML element with the search result data
+      resultElement.querySelector('.search-result-icon').classList.add(iconClass);
+      resultElement.querySelector('.search-result-title').textContent = result.TITLE;
+      resultElement.querySelector('.search-result-link').href = result.URL;
     }
   }
 
@@ -104,3 +98,4 @@
 
     return '';
   }
+</script>
