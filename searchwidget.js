@@ -84,17 +84,12 @@ function handleSearch(event) {
     resultItem.classList.add('result-item');
     
 
-    // Check if the TYPE matches an element ID and show the corresponding element
-    const type = result.TYPE;
-    const matchingElement = document.getElementById(type);
-    if (matchingElement) {
-    // Create an icon-result div and add it to the result-item
+    // Create an icon-result div and add it next to the title link
     const iconResult = document.createElement('div');
     iconResult.classList.add('icon-result');
-    resultItem.appendChild(iconResult);
-  }
-    
     resultItem.appendChild(titleLink);
+    resultItem.appendChild(iconResult);
+    
     resultsContainer.appendChild(resultItem);
   }
 }
